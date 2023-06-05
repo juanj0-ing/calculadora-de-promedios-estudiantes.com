@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <body background="fd3.jpg">
+  <center><title>Calculadora de Calificaciones</title>
+  <style>
+    table {
+      border-collapse: collapse;
+       background-color: #b3d9ff;
+    }
+
+    th, td {
+      padding: 8px;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    td input {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    #promedios-container {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Calculadora de Calificaciones</h1>
+  <table id="tabla-calificaciones">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Calificación 1</th>
+        <th>Calificación 2</th>
+        <th>Calificación 3</th>
+        <th>Calificación 4</th>
+        <th>Calificación 5</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="text" value="Juan"></td>
+        <td><input type="number" step="0.1" value="4.6"></td>
+        <td><input type="number" step="0.1" value="5.2"></td>
+        <td><input type="number" step="0.1" value="6.8"></td>
+        <td><input type="number" step="0.1" value="7.2"></td>
+        <td><input type="number" step="0.1" value="8.1"></td>
+      </tr>
+      <tr>
+        <td><input type="text" value="María"></td>
+        <td><input type="number" step="0.1" value="8.0"></td>
+        <td><input type="number" step="0.1" value="7.5"></td>
+        <td><input type="number" step="0.1" value="9.2"></td>
+        <td><input type="number" step="0.1" value="6.9"></td>
+        <td><input type="number" step="0.1" value="8.5"></td>
+      </tr>
+      <tr>
+        <td><input type="text" value="Pedro"></td>
+        <td><input type="number" step="0.1" value="7.5"></td>
+        <td><input type="number" step="0.1" value="6.8"></td>
+        <td><input type="number" step="0.1" value="7.9"></td>
+        <td><input type="number" step="0.1" value="8.4"></td>
+        <td><input type="number" step="0.1" value="7.7"></td>
+      </tr>
+      <tr>
+        <td><input type="text" value="Ana"></td>
+        <td><input type="number" step="0.1" value="10"></td>
+        <td><input type="number" step="0.1" value="9.8"></td>
+        <td><input type="number" step="0.1" value="10"></td>
+        <td><input type="number" step="0.1" value="9.6"></td>
+        <td><input type="number" step="0.1" value="8.9"></td>
+      </tr>
+      <!-- Nuevas filas -->
+      <tr>
+        <td><input type="text" value="Luis"></td>
+        <td><input type="number" step="0.1" value="6.5"></td>
+        <td><input type="number" step="0.1" value="7.0"></td>
+        <td><input type="number" step="0.1" value="8.2"></td>
+        <td><input type="number" step="0.1" value="7.7"></td>
+        <td><input type="number" step="0.1" value="6.8"></td>
+      </tr>
+      <tr>
+        <td><input type="text" value="Laura"></td>
+        <td><input type="number" step="0.1" value="9.6"></td>
+        <td><input type="number" step="0.1" value="8.7"></td>
+        <td><input type="number" step="0.1" value="7.9"></td>
+        <td><input type="number" step="0.1" value="8.1"></td>
+        <td><input type="number" step="0.1" value="9.0"></td>
+      </tr>
+    </tbody>
+  </table>
+  <button onclick="calcularPromedios()">Calcular Promedios</button>
+  <div id="promedios-container"></div>
+
+  <script>
+    function calcularPromedios() {
+      var tabla = document.getElementById('tabla-calificaciones');
+      var filas = tabla.rows;
+      var promediosContainer = document.getElementById('promedios-container');
+      promediosContainer.innerHTML = '';
+
+      for (var i = 1; i < filas.length; i++) {
+        var calificaciones = [];
+        var nombreInput = filas[i].cells[0].querySelector('input');
+        for (var j = 1; j < filas[i].cells.length; j++) {
+          var input = filas[i].cells[j].querySelector('input');
+          calificaciones.push(parseFloat(input.value));
+        }
+
+        var promedio = calcularPromedio(calificaciones);
+
+        var promedioDiv = document.createElement('div');
+        promedioDiv.textContent = "Promedio de " + nombreInput.value + ": " + promedio.toFixed(2);
+        promediosContainer.appendChild(promedioDiv);
+      }
+    }
+
+    function calcularPromedio(calificaciones) {
+      var suma = calificaciones.reduce(function(sum, value) {
+        return sum + value;
+      }, 0);
+      return suma / calificaciones.length;
+    }  
+</script>
+</center>
+</body>
+</html>
+<center><h1 style="color:#000000; ">El Desarrollador y CEO "JuanJoseLozanoJimenez" de esta pagina web titulada como CALCULADORA DE CALIFICACIONES Es Obra De ING JuanJo &copy;</h1>
